@@ -68,7 +68,7 @@ public class InventoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(transaction);
     }
 
-    @GetMapping("/transaction")
+    @GetMapping("/transactions")
     public ResponseEntity<Map<String, Object>> getTransactions(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -76,7 +76,7 @@ public class InventoryController {
 
         List<InventoryTransactionDTO> transactions = inventoryService.getTransactions(page, size);
         long totalElements = inventoryService.getTransactionCount();
-        long totalPages = (totalElements + size - 1) / size;
+        long totalPages = (totalElements + size - 1);
 
         Map<String, Object> response = new HashMap<>();
         response.put("content", transactions);
