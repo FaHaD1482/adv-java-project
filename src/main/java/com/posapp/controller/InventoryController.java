@@ -76,7 +76,7 @@ public class InventoryController {
 
         List<InventoryTransactionDTO> transactions = inventoryService.getTransactions(page, size);
         long totalElements = inventoryService.getTransactionCount();
-        long totalPages = (totalElements + size - 1);
+        long totalPages = (totalElements + size - 1) / size;
 
         Map<String, Object> response = new HashMap<>();
         response.put("content", transactions);
